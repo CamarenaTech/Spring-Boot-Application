@@ -18,8 +18,7 @@ import javax.persistence.Transient;
 @Entity
 @Table(name="usuarios1")
 public class User implements Serializable {
-	
-
+		
 	private static final long serialVersionUID = 8218076761088595302L;
 	
 	@Id
@@ -30,7 +29,9 @@ public class User implements Serializable {
 	private String firstName;
 	
 	@Column
-	private String lastname;
+	private String lastName;
+	
+
 	
 	@Column
 	private String email;
@@ -42,7 +43,7 @@ public class User implements Serializable {
 	private String password;
 	
 	@Transient
-	private String ConfirmPAssworod;
+	private String confirmPassword;
 	
 	
 	@ManyToMany(fetch=FetchType.LAZY)
@@ -51,7 +52,8 @@ public class User implements Serializable {
 	inverseJoinColumns=@JoinColumn(name="role_id"))
 	private Set<Role> roles;
 
-
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -61,6 +63,17 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
+	public String getLastName() {
+		return lastName;
+	}
+	
+	
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	
+	
+	
 
 	public String getFirstName() {
 		return firstName;
@@ -69,16 +82,6 @@ public class User implements Serializable {
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
-	}
-
-
-	public String getLastname() {
-		return lastname;
-	}
-
-
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
 	}
 
 
@@ -111,14 +114,15 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
+	
 
-	public String getConfirmPAssworod() {
-		return ConfirmPAssworod;
+	public String getConfirmPassword() {
+		return confirmPassword;
 	}
 
 
-	public void setConfirmPAssworod(String confirmPAssworod) {
-		ConfirmPAssworod = confirmPAssworod;
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 
 
@@ -134,19 +138,21 @@ public class User implements Serializable {
 
 	@Override
 	public int hashCode() {
+		
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((ConfirmPAssworod == null) ? 0 : ConfirmPAssworod.hashCode());
+		result = prime * result + ((confirmPassword == null) ? 0 : confirmPassword.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((lastname == null) ? 0 : lastname.hashCode());
+		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((roles == null) ? 0 : roles.hashCode());
 		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
 		return result;
 	}
-
+	
+	
 
 	@Override
 	public boolean equals(Object obj) {
@@ -157,10 +163,10 @@ public class User implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (ConfirmPAssworod == null) {
-			if (other.ConfirmPAssworod != null)
+		if (confirmPassword == null) {
+			if (other.confirmPassword != null)
 				return false;
-		} else if (!ConfirmPAssworod.equals(other.ConfirmPAssworod))
+		} else if (!confirmPassword.equals(other.confirmPassword))
 			return false;
 		if (email == null) {
 			if (other.email != null)
@@ -177,10 +183,10 @@ public class User implements Serializable {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (lastname == null) {
-			if (other.lastname != null)
+		if (lastName == null) {
+			if (other.lastName != null)
 				return false;
-		} else if (!lastname.equals(other.lastname))
+		} else if (!lastName.equals(other.lastName))
 			return false;
 		if (password == null) {
 			if (other.password != null)
@@ -203,8 +209,8 @@ public class User implements Serializable {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastname=" + lastname + ", email=" + email
-				+ ", userName=" + userName + ", password=" + password + ", ConfirmPAssworod=" + ConfirmPAssworod
+		return "User [id=" + id + ", firstName=" + firstName + ", lastname=" + lastName + ", email=" + email
+				+ ", userName=" + userName + ", password=" + password + ", ConfirmPAssworod=" + confirmPassword
 				+ ", roles=" + roles + "]";
 	}
 	

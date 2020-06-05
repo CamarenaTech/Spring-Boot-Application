@@ -22,6 +22,7 @@ public class Role implements Serializable {
 	private String description;
 	
 	
+	
 	public long getId() {
 		return id;
 	}
